@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import hashlib
 import hmac
 
@@ -15,7 +14,7 @@ def GenerateMasterPrivateKeyAndMasterChainCode(MnemonicSeed_Str):
     MasterPrivateKey_Str = HashOfSeedAndKey_Str[0:64]     #First 32 byte
     #The master chain code as defined in the BIP32 standard, is the last 32 byte of the seed's + key resulting hash
     MasterChainCode_Str = HashOfSeedAndKey_Str[64:128]    #Last 32 byte
-=======
+
 import hashlib
 import hmac
 from ecdsa import SECP256k1
@@ -40,4 +39,4 @@ def GenerateMasterPrivateKeyAndMasterChainCode(MnemonicSeed_Str):
 
     print(hex(MasterPublicKey_Str.x()))
     print(hex(MasterPublicKey_Str.y()))
->>>>>>> master
+

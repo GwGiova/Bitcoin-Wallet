@@ -79,7 +79,6 @@ def GeneratingMnemonicWordsSeed(StringContainingAllWords_Str):
 
     MasterSeed_Str = hashlib.pbkdf2_hmac(ALGORITHM_USED_STR, StringContainingAllWords_Str.encode(ENCODING_USED_STR), SALT_STR.encode(ENCODING_USED_STR), ITERATION_COUNT_INT).hex()
 
-=======
 import secrets
 import hashlib
 import MnemonicWordsList
@@ -161,5 +160,4 @@ def GeneratingMnemonicWordsSeed(StringContainingAllWords_Str):
 
     MasterSeed_Str = hashlib.pbkdf2_hmac(ALGORITHM_USED_STR, StringContainingAllWords_Str.encode(ENCODING_USED_STR), SALT_STR.encode(ENCODING_USED_STR), ITERATION_COUNT_INT).hex()
 
->>>>>>> master
     return MasterSeed_Str, SaltPassword_Str

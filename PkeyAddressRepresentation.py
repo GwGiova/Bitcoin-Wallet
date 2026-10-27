@@ -22,7 +22,7 @@ def CreateTheP2PKHAddress(PublicKey_Str):
 
     P2PKHAddress_Str = P2PKHAddress_Bytes.hex()
 
-    ConversionInBase58Check(P2PKHAddress_Str)
+    return P2PKHAddress_Str
 
 #This function expects a P2PKH raw address in string format
 def ConversionInBase58Check(P2PKHAddress_Str):
@@ -41,8 +41,6 @@ def ConversionInBase58Check(P2PKHAddress_Str):
 
     PayloadBase58Check = CompleteP2PKHAddress_Bytes + Checksum_Bytes
 
-    Base58CheckAddress = base58.b58encode(PayloadBase58Check).decode()
+    Base58CheckAddress_Str = base58.b58encode(PayloadBase58Check).decode()
 
-    print(Base58CheckAddress)
-
-CreateTheP2PKHAddress("0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798")
+    return Base58CheckAddress_Str
