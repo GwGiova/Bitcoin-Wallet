@@ -57,6 +57,11 @@ I implemented the **BIP39** standard and partially the **BIP32** standard, follo
   Contains the 2048 BIP39 words stored in a dictionary.  
   Each 11‑bit binary number (0–2047) maps to a specific word.
 
+- **OPCODES.py**
+  Contains two dictionaries used to convert Bitcoin Script opcodes between their string representations and their hexadecimal values:
+  OPCODE_BYTES: maps opcode names (e.g., "OP_PUSHDATA1") to their corresponding hexadecimal values (e.g., 0x4c).
+  BYTES_OPCODE: maps hexadecimal opcode values (e.g., 0x4c) back to their corresponding opcode names (e.g., "OP_PUSHDATA1").
+  These dictionaries allow conversion in both directions between opcode names and their byte values.
 ---
 
 ## Usage
