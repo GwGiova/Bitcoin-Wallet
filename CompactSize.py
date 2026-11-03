@@ -2,7 +2,7 @@
 #It's used in field like "input count" in a Bitcoin transaction.
 #??Have to implement little endian??
 
-def CompactCode(CompactSize_Bytes):
+def CompactSize(CompactSize_Bytes):
 
     if(CompactSize_Bytes <= 0xfc):
 
