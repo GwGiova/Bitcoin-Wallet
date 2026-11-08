@@ -69,3 +69,19 @@ def ScriptPubKeyForP2MS(PubKeyArray, NofRequiredSignatures_String):
     P2MSScriptPubKey_Bytes += SecondToLastField
 
     P2MSScriptPubKey_Bytes += LastField
+
+    return P2MSScriptPubKey_Bytes
+
+def ScriptPubKeyForP2SH(RedeemScriptHash_Bytes):
+
+    Field1_Bytes = bytes([OPCODES.OPCODE_BYTES["OP_HASH160"]])
+
+    Field2_Bytes = bytes([OPCODES.OPCODE_BYTES["OP_PUSHBYTES_20"]])
+
+    Field3_Bytes = RedeemScriptHash_Bytes
+
+    Field4_Bytes = bytes([OPCODES.OPCODE_BYTES["OP_EQUAL"]])
+
+    P2SHScriptPubKey_Bytes = Field1_Bytes + Field2_Bytes + Field3_Bytes + Field4_Bytes
+
+    return P2SHScriptPubKey_Bytes
