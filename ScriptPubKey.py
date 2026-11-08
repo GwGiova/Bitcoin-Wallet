@@ -9,7 +9,7 @@ def ScriptPubKeyForP2PK(PubKey_Bytes, IsItCompressed_Bool):
 
 #Field3 is the OPCODE of CHECKSIG
 
-    if(IsItCompressed_Bool == 0):
+    if(len(PubKey_Bytes) == 65):
 
 
         Field1_Bytes = bytes([OPCODES.OPCODE_BYTES["OP_PUSHBYTES_65"]])
@@ -43,3 +43,29 @@ def ScriptPubKeyForP2PKH(PubKeyHash_Bytes):
     P2PKHScriptPubKey_Bytes = Field1_Bytes + Field2_Bytes + Field3_Bytes + Field4_Bytes + Field5_Bytes + Field6_Bytes
 
     return P2PKHScriptPubKey_Bytes
+
+def ScriptPubKeyForP2MS(PubKeyArray, NofRequiredSignatures_String):
+
+    NofRequiredPubKeys_String = str(len(PubKeyArray))
+
+    Field1_Bytes = bytes([OPCODES.OPCODE_BYTES[f"OP_{NofRequiredSignatures_String}"]])
+
+    P2MSScriptPubKey_Bytes = Field1_Bytes
+
+    for i in range(len(PubKeyArray)):
+
+        PubKey = PubKeyArray.pop()
+
+        Field_Bytes = bytes([OPCODES.OPCODE_BYTES[f"OP_PUSHBYTES_{len(PubKey)}"]])
+
+        P2MSScriptPubKey_Bytes += Field_Bytes
+
+        P2MSScriptPubKey_Bytes += PubKey
+
+    SecondToLastField = bytes([OPCODES.OPCODE_BYTES[f"OP_{NofRequiredPubKeys_String}"]])
+
+    LastField = bytes([OPCODES.OPCODE_BYTES["OP_CHECKMULTISIG"]])
+
+    P2MSScriptPubKey_Bytes += SecondToLastField
+
+    P2MSScriptPubKey_Bytes += LastField
